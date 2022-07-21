@@ -1,5 +1,7 @@
 const mongoose = require('mongoose')
-const URL = 'mongodb+srv://hungry_bear:hungry_bear@cluster0.8oki3.mongodb.net/HungryBear'
+require("dotenv").config();
+
+const URL = `mongodb+srv://${process.env.MONGO_DB_USER_NAME}:${process.env.MONGO_DB_PASSWORD}@cluster0.8oki3.mongodb.net/${process.env.MONGO_DB_DATABASE}`
 
 mongoose.connect(URL)
 

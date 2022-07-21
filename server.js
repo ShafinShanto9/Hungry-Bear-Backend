@@ -1,7 +1,20 @@
 const express = require('express')
 const dbConnect = require('./dbConnect')
+const itemsRoute = require('./routes/itemsRoute') 
+require("dotenv").config();
+
+
 const app = express()
+app.use(express.json())
 const port = 5000
 
-app.get('/', (req, res) => res.send('hellow from node js'))
-app.listen(port,()=>console.log(`Node js Server Running At ${port}`))
+
+app.use('/api/items/', itemsRoute)
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
