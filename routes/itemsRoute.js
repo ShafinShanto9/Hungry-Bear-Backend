@@ -11,4 +11,15 @@ router.get("/get-all-items", async(req, res) => {
     }
 })  
 
+router.post("/add-item", async(req, res) => {
+    try {
+        const newItem = new itemModel(req.body)
+        await newItem.save()
+        res.send('Item Added Successfully')
+    } catch (error) {
+        res.status(400).json(error)
+        console.log(error);
+    }
+}) 
+
 module.exports = router
