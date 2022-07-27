@@ -20,6 +20,16 @@ router.post("/add-item", async(req, res) => {
         res.status(400).json(error)
         console.log(error);
     }
-}) 
+})
+
+router.post("/edit-item", async(req, res) => {
+    try {
+        await itemModel.findOneAndUpdate({_id: req.body.itemId}, req.body)
+        res.send('Item Updated Successfully')
+    } catch (error) {
+        res.status(400).json(error)
+        console.log(error);
+    }
+})
 
 module.exports = router
